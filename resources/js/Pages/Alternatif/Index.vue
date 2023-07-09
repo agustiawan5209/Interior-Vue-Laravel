@@ -91,7 +91,7 @@ function plusSubAlternatif() {
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-600">
-                                        <img :src="item.detail.image_path" :alt="item.nama" class="w-32 rounded-xl object-cover" >
+                                        <img v-if="item.detail !== null" :src="item.detail.image_path" :alt="item.nama" class="w-32 rounded-xl object-cover" >
                                     </td>
                                     <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-600">
                                         <div class="flex items-center justify-center gap-4">

@@ -12,7 +12,7 @@ const props = defineProps(['alternatifId', 'alternatif']);
         <Head title="Detail" />
         <div class="grid grid-cols-12 gap-4 justify-items-center  py-4 md:py-12 px-3 md:px-10">
             <div class=" col-span-12 md:col-span-5 border w-full">
-                <img :src="alternatifId.lokasi.full_image_path" alt="gambar alternatifId" class="object-cover w-full h-auto">
+                <img :src="alternatifId.detail.image_path" alt="gambar alternatifId" class="object-cover w-full h-auto">
             </div>
             <div class=" col-span-12 md:col-span-7 border w-full bg-gray-100 relative">
                 <div class="flex flex-col">
