@@ -107,7 +107,7 @@ function submit() {
                     <div class="testmonial-wrapper">
                         <img v-if="item.alternatif.detail !== null"  :src="item.alternatif.detail.image_path" :alt="item.alternatif.nama">
                         <Link :href="route('Home.detail')" class="title text-black mb-3"><h5>{{ item.alternatif.nama }}</h5></Link>
-                        <p class="text-black">{{ item.alternatif.detail.deskripsi }}</p>
+                        <p v-if="item.alternatif.detail !== null" class="text-black">{{ item.alternatif.detail.deskripsi }}</p>
                     </div>
                 </div>
             </div>
