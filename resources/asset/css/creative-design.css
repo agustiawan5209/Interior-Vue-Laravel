@@ -11037,7 +11037,7 @@ pre .code {
 nav.page-navbar {
   min-height: 70px;
   padding: 0 30px;
-  background-color: rgba(52, 58, 64, 0.2);
+  background-color:#545b56;
   -webkit-transition: all 0.3s linear 0s;
   transition: all 0.3s linear 0s;
 }
@@ -11475,9 +11475,10 @@ section.height-auto {
 }
 
 .testmonial-wrapper img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  border-radius: 10%;
   margin-bottom: 15px;
   -webkit-transform: translateY(-45px);
       -ms-transform: translateY(-45px);

@@ -36,7 +36,8 @@ class HomeController extends Controller
     public function detail()
     {
         $alternatif = Alternatif::where('nama', '=', Request::input('nama'))
-            ->with(['subalternatif', 'lokasi', 'subalternatif.kriteria'])->first();
+            ->with(['subalternatif', 'subalternatif.kriteria','detail'])->first();
+            // dd($alternatif);
         $hasil = HasilMatrix::with(['alternatif', 'alternatif.detail', 'alternatif.subalternatif'])
             ->when($alternatif->subalternatif->count() > 0, function ($query) use ($alternatif) {
                 foreach ($alternatif->subalternatif as $value) {
@@ -47,7 +48,7 @@ class HomeController extends Controller
                 }
             })
             ->orderBy('ranking', 'desc')
-            ->paginate(8);
+            ->get();
         return Inertia::render('DetailAlternatif', [
             'alternatifId' => $alternatif,
             'alternatif' => $hasil,

@@ -106,7 +106,7 @@ function submit() {
                 <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif">
                     <div class="testmonial-wrapper">
                         <img v-if="item.alternatif.detail !== null"  :src="item.alternatif.detail.image_path" :alt="item.alternatif.nama">
-                        <Link :href="route('Home.detail')" class="title text-black mb-3"><h5>{{ item.alternatif.nama }}</h5></Link>
+                        <Link :href="route('Home.detail', {nama: item.alternatif.nama})" class="title text-black mb-3"><h5>{{ item.alternatif.nama }}</h5></Link>
                         <p v-if="item.alternatif.detail !== null" class="text-black">{{ item.alternatif.detail.deskripsi }}</p>
                     </div>
                 </div>
