@@ -17,5 +17,8 @@ class SubAlternatif extends Model
     public function kriteria(){
         return $this->hasOne(Kriteria::class, 'kode' ,'kriteria_kode');
     }
+    public function alternatif(){
+        return $this->hasOne(Alternatif::class,'id','alternatif_id');
+    }
 
 }

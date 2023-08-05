@@ -6,6 +6,8 @@ use App\Models\Kriteria;
 use App\Models\NilaiBobotKriteria;
 use App\Models\NilaiBobotAlternatif;
 use App\Http\Controllers\SubKriteriaController;
+use App\Models\MatrixAlternatifJson;
+use App\Models\MatrixJson;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -121,9 +123,18 @@ class KriteriaController extends Controller
      */
     public function destroy(Kriteria $kriteria)
     {
-        $data = $kriteria->find(Request::input('id'));
-        NilaiBobotAlternatif::where('kriteria_id', $data->kode)->delete();
-        NilaiBobotKriteria::where('kriteria1', $data->kode)->orWhere('kriteria2', $data->kode)->delete();
+        $data = Kriteria::find(Request::input('id'));
+        $nilaiA = NilaiBobotAlternatif::where('kriteria_id', $data->kode)->get();
+        $m = MatrixJson::all();
+        $a = MatrixAlternatifJson::all();
+        foreach($m as $item){
+            MatrixJson::where('id',$item->id)->delete();
+        }
+        foreach($a as $item){
+            MatrixAlternatifJson::where('id',$item->id)->delete();
+        }
+        $nilaiK = NilaiBobotKriteria::where('kriteria1', $data->kode)->orWhere('kriteria2', $data->kode)->get();
+        // dd($nilaiA,$nilaiK);
         $data->delete();
     }
     private function createCode()

@@ -5,7 +5,7 @@ import { useForm, Link, Head } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 
-const props = defineProps(['alternatif', 'kriteria'])
+const props = defineProps(['alternatif', 'kriteria','alternatif_lain'])
 const ShowFilter = ref(false)
 const LoadPage = ref(false)
 const FilterForm = useForm({
@@ -22,6 +22,9 @@ function submit() {
         }
     })
 }
+
+// console.log(props.alternatif)
+// console.log(props.alternatif_lain)
 </script>
 
 <template>
@@ -105,14 +108,23 @@ function submit() {
             <div class="row " v-if="alternatif.length > 0">
                 <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif">
                     <div class="testmonial-wrapper">
-                        <img v-if="item.alternatif.detail !== null"  :src="item.alternatif.detail.image_path" :alt="item.alternatif.nama">
-                        <Link :href="route('Home.detail', {nama: item.alternatif.nama})" class="title text-black mb-3"><h5>{{ item.alternatif.nama }}</h5></Link>
-                        <p v-if="item.alternatif.detail !== null" class="text-black">{{ item.alternatif.detail.deskripsi }}</p>
+                        <img v-if="item.detail !== null"  :src="item.detail.image_path" :alt="item.nama">
+                        <Link :href="route('Home.detail', {nama: item.nama})" class="title text-black mb-3"><h5>{{ item.nama }}</h5></Link>
+                        <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
                     </div>
                 </div>
             </div>
-            <div class="row" v-else>
-               <h1>Kosong</h1>
+            <div class="container" v-else>
+                <h4 class="text-sm-center mb-lg-5">Alternatif Lain</h4>
+               <div class="row">
+                <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif_lain">
+                    <div class="testmonial-wrapper">
+                        <img v-if="item.detail !== null"  :src="item.detail.image_path" :alt="item.nama">
+                        <Link :href="route('Home.detail', {nama: item.nama})" class="title text-black mb-3"><h5>{{ item.nama }}</h5></Link>
+                        <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
+                    </div>
+                </div>
+               </div>
             </div>
 
         </div>
