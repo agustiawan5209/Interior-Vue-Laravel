@@ -10,7 +10,7 @@ class AlternatifDetail extends Model
 {
     use HasFactory;
     protected $table = 'alternatif_details';
-    protected $fillable = ['alternatif_id', 'image','deskripsi'];
+    protected $fillable = ['alternatif_id', 'image','deskripsi', 'material', 'furnitur'];
 
 
     protected $appends = [

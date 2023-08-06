@@ -56,7 +56,7 @@ function back() {
 
         <div class="content main">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border lg:px-10 lg:py-4">
-                <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
                     <ul class="w-full divide-y divide-gray-100">
                         <li class="grid grid-cols-4 px-4 py-3">
                             <PrimaryButton type="button" @click="back">Kembali</PrimaryButton>
@@ -68,6 +68,18 @@ function back() {
                         <li class="grid grid-cols-4 px-4 py-3">
                             <h3 class="border-r-gray-800 border-r font-semibold">Nama alternatif</h3>
                             <p class="px-2 text-lg">{{ alternatif.nama }}</p>
+                        </li>
+                        <li class="grid grid-cols-4 px-4 py-3">
+                            <h3 class="border-r-gray-800 border-r font-semibold">Material</h3>
+                            <p class="px-2 text-sm">{{ alternatif.detail.material }}</p>
+                        </li>
+                        <li class="grid grid-cols-4 px-4 py-3">
+                            <h3 class="border-r-gray-800 border-r font-semibold">Furnitur</h3>
+                            <p class="px-2 text-sm">{{ alternatif.detail.furnitur }}</p>
+                        </li>
+                        <li class="grid grid-cols-4 px-4 py-3">
+                            <h3 class="border-r-gray-800 border-r font-semibold">Deskripsi</h3>
+                            <p class="px-2 text-sm">{{ alternatif.detail.deskripsi }}</p>
                         </li>
                     </ul>
                     <hr class="divider"/>

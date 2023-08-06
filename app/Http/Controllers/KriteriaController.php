@@ -8,6 +8,7 @@ use App\Models\NilaiBobotAlternatif;
 use App\Http\Controllers\SubKriteriaController;
 use App\Models\MatrixAlternatifJson;
 use App\Models\MatrixJson;
+use App\Models\SubAlternatif;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -133,6 +134,7 @@ class KriteriaController extends Controller
         foreach($a as $item){
             MatrixAlternatifJson::where('id',$item->id)->delete();
         }
+        SubAlternatif::where('kriteria_kode', $data->kode)->delete();
         $nilaiK = NilaiBobotKriteria::where('kriteria1', $data->kode)->orWhere('kriteria2', $data->kode)->get();
         // dd($nilaiA,$nilaiK);
         $data->delete();

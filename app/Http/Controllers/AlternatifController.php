@@ -58,6 +58,8 @@ class AlternatifController extends Controller
             $request->validate([
                 'name'=> 'required|unique:alternatifs,nama',
                 'image'=> 'required|image|max:1000',
+                'material'=> 'required|string|max:200',
+                'furnitur'=> 'required|string|max:200',
             ]);
            $reqKodeSub = $request->subAlternatif;
            $tbKriteria = new NilaiBobotAlternatifController();
@@ -73,7 +75,9 @@ class AlternatifController extends Controller
                 AlternatifDetail::create([
                     'alternatif_id'=>$alternatif->id,
                     'image'=> $name,
-                    'deskripsi'=> $request->deskripsi
+                    'deskripsi'=> $request->deskripsi,
+                    'material'=> $request->material,
+                    'furnitur'=> $request->furnitur,
                 ]);
            }
 
@@ -97,7 +101,7 @@ class AlternatifController extends Controller
     public function show(Alternatif $alternatif, Request $request)
     {
         return Inertia::render('Alternatif/Show', [
-            'alternatif'=> $alternatif->with(['subalternatif', 'subalternatif.kriteria'])->where('kode', $request->slug)->first()
+            'alternatif'=> $alternatif->with(['subalternatif', 'subalternatif.kriteria', 'detail'])->where('kode', $request->slug)->first()
         ]);
     }
 
@@ -122,7 +126,10 @@ class AlternatifController extends Controller
             'nama' => ['required'],
             'kode' => ['required', 'exists:alternatifs,kode'],
             'deskripsi'=> 'required|string',
+            'material'=> 'required|string|max:200',
+            'furnitur'=> 'required|string|max:200',
             'image'=> ['nullable', 'image', 'mimes:png,jpg'],
+
         ]);
 
         $reqKodeSub = collect($request->subAlternatif);
@@ -146,7 +153,10 @@ class AlternatifController extends Controller
              ]);
         }
         AlternatifDetail::where('alternatif_id', $alternatif->id)->update([
-            'deskripsi'=> $request->deskripsi
+            'deskripsi'=> $request->deskripsi,
+            'material'=> $request->material,
+            'furnitur'=> $request->furnitur,
+
         ]);
         $tbKriteria->store();
         for ($i = 0; $i < count($reqKodeSub); $i++) {

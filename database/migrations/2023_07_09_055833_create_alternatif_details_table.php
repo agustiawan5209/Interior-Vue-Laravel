@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('alternatif_id')->constrained('alternatifs')->onDelete('cascade');
             $table->string('image')->nullable();
             $table->longText('deskripsi')->nullable();
+            $table->string('material',200)->nullable();
+            $table->string('furnitur',200)->nullable();
             $table->timestamps();
         });
     }

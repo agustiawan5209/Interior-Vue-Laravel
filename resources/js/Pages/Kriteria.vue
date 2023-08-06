@@ -5,7 +5,7 @@ import { useForm, Link, Head } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 
-const props = defineProps(['alternatif', 'kriteria','alternatif_lain'])
+const props = defineProps(['alternatif', 'kriteria', 'alternatif_lain'])
 const ShowFilter = ref(false)
 const LoadPage = ref(false)
 const FilterForm = useForm({
@@ -78,8 +78,7 @@ function submit() {
                     </button>
                 </div>
             </div>
-            <form :class="ShowFilter ? 'flex w-full  px-3 md:px-8 py-4 md:py-12 ' : 'hidden h-0'" id="filterform"
-                class=" "
+            <form :class="ShowFilter ? 'flex w-full  px-3 md:px-8 py-4 md:py-12 ' : 'hidden h-0'" id="filterform" class=" "
                 @submit.prevent="submit">
                 <div class="row px-3 py-2 ">
 
@@ -108,26 +107,37 @@ function submit() {
             <div class="row " v-if="alternatif.length > 0">
                 <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif">
                     <div class="testmonial-wrapper">
-                        <img v-if="item.detail !== null"  :src="item.detail.image_path" :alt="item.nama">
-                        <Link :href="route('Home.detail', {nama: item.nama})" class="title text-black mb-3"><h5>{{ item.nama }}</h5></Link>
+                        <img v-if="item.detail !== null" :src="item.detail.image_path" :alt="item.nama">
+                        <Link :href="route('Home.detail', { nama: item.nama })" class="title text-black mb-3">
+                        <h5>{{ item.nama }}</h5>
+                        </Link>
                         <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
                     </div>
                 </div>
             </div>
             <div class="container" v-else>
                 <h4 class="text-sm-center mb-lg-5">Alternatif Lain</h4>
-               <div class="row">
-                <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif_lain">
-                    <div class="testmonial-wrapper">
-                        <img v-if="item.detail !== null"  :src="item.detail.image_path" :alt="item.nama">
-                        <Link :href="route('Home.detail', {nama: item.nama})" class="title text-black mb-3"><h5>{{ item.nama }}</h5></Link>
-                        <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
+                <div class="row">
+                    <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif_lain">
+                        <div class="testmonial-wrapper">
+                            <img v-if="item.detail !== null" :src="item.detail.image_path" :alt="item.nama">
+                            <Link :href="route('Home.detail', { nama: item.nama })" class="title text-black mb-3">
+                            <h5>{{ item.nama }}</h5>
+                            </Link>
+                            <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
+                            <div class="block">
+                                <h4>Material</h4>
+                                <p v-if="item.detail !== null" class="text-black text-sm">{{ item.detail.material }}</p>
+                            </div>
+                            <div class="block">
+                                <h4>Furnitur</h4>
+                                <p v-if="item.detail !== null" class="text-black text-sm">{{ item.detail.furnitur }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-               </div>
             </div>
 
         </div>
 
-    </GuestLayout>
-</template>
+    </GuestLayout></template>

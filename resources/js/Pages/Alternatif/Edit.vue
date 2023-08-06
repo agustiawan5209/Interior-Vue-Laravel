@@ -27,7 +27,9 @@ const Addform = useForm({
     nama: props.alternatif.nama,
     subAlternatif: [],
     image:null,
-    deskripsi:props.alternatif.detail.deskripsi
+    deskripsi:props.alternatif.detail.deskripsi,
+    material: props.alternatif.detail.material,
+    furnitur: props.alternatif.detail.furnitur,
 });
 const AlternatifSub = ref([]);
 for (let index = 0; index < props.alternatif.subalternatif.length; index++) {
@@ -97,12 +99,28 @@ function plusSubAlternatif() {
                                     placeholder="file" >
                                 <InputError :message="Addform.errors.image" />
                             </div>
-                            <div class="col-span-2">
-                                <label for="desk"
-                                    class="block mb-2 text-sm font-medium text-gray-900 ">Dekripsi</label>
+                            <div>
+                                <label for="material"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
+                                <textarea name="desk" id="desk" v-model="Addform.material"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                                    placeholder="material" required=""></textarea>
+                                <InputError :message="Addform.errors.material" />
+                            </div>
+                            <div>
+                                <label for="material"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Furnitur</label>
+                                <textarea name="desk" id="desk" v-model="Addform.furnitur"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                                    placeholder="furnitur" required=""></textarea>
+                                <InputError :message="Addform.errors.furnitur" />
+                            </div>
+                            <div>
+                                <label for="name"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dekripsi</label>
                                 <textarea name="desk" id="desk" v-model="Addform.deskripsi"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
-                                    placeholder="deskripsi" ></textarea>
+                                    placeholder="deskripsi" required=""></textarea>
                                 <InputError :message="Addform.errors.deskripsi" />
                             </div>
                         </div>

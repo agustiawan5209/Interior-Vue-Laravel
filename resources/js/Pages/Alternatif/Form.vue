@@ -24,6 +24,8 @@ const Addform = useForm({
     subAlternatif: [],
     image:null,
     deskripsi: null,
+    material:null,
+    furnitur: null,
 });
 function submit() {
     Addform.post(route('Alternatif.store'), {
@@ -86,6 +88,23 @@ function plusSubAlternatif() {
                                     placeholder="image" required="">
                                 <InputError :message="Addform.errors.image" />
                             </div>
+
+                            <div>
+                                <label for="material"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
+                                <textarea name="desk" id="desk" v-model="Addform.material"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                                    placeholder="material" required=""></textarea>
+                                <InputError :message="Addform.errors.material" />
+                            </div>
+                            <div>
+                                <label for="material"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Furnitur</label>
+                                <textarea name="desk" id="desk" v-model="Addform.furnitur"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 "
+                                    placeholder="furnitur" required=""></textarea>
+                                <InputError :message="Addform.errors.furnitur" />
+                            </div>
                             <div>
                                 <label for="name"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dekripsi</label>
@@ -94,7 +113,6 @@ function plusSubAlternatif() {
                                     placeholder="deskripsi" required=""></textarea>
                                 <InputError :message="Addform.errors.deskripsi" />
                             </div>
-
                         </div>
                         <div class="grid grid-cols-3 mb-5 gap-4">
                             <div class="col-span-1" v-for="(item, ind) in Kriteria" :key="item.id">
