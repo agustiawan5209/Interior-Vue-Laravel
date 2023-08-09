@@ -32,34 +32,6 @@ function submit() {
 
         <Head title="Kriteria" />
 
-
-        <!-- section -->
-        <section>
-            <!-- Container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-md-6">
-                        <div class="img-wrapper">
-                            <div class="after"></div>
-                            <img src="assets/imgs/img-1.jpg" class="w-100" alt="About Us">
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <h6 class="title mb-3">Lorem ipsum dolor sit amet, consectetur.</h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae autem rem impedit molestiae hic
-                            ducimus, consequuntur ullam dolorem quaerat beatae labore explicabo, sint laboriosam aperiam
-                            nihil inventore facilis. Quasi, facilis.</p>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, amet!
-                        </p>
-                        <button class="btn btn-outline-primary btn-sm">Learn More</button>
-                    </div>
-                </div>
-                <!-- End of Row -->
-            </div>
-            <!-- End of Container -->
-        </section><!-- End of Section -->
         <div class="container border rounded pb-2 border-primary">
 
             <div class="w-full px-4 flex justify-between py-2 items-center">
