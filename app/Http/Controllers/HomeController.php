@@ -7,6 +7,7 @@ use App\Models\Kriteria;
 use App\Models\Alternatif;
 use App\Models\HasilMatrix;
 use App\Models\SubAlternatif;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 class HomeController extends Controller
@@ -63,7 +64,7 @@ class HomeController extends Controller
             }
             foreach ($NotsameData as $key => $value) {
 
-                $subalternatif =  SubAlternatif::where('kriteria_kode', '=',$value)->get();
+                $subalternatif =  SubAlternatif::where('kriteria_kode', '=', $value)->get();
                 if ($subalternatif->count() > 0) {
                     $hasil_alternatif_lain[] = Alternatif::with(['subalternatif', 'detail', 'nilaiMatrix'])
                         ->where('id', $value)
@@ -86,6 +87,7 @@ class HomeController extends Controller
     {
         $alternatif = Alternatif::where('nama', '=', Request::input('nama'))
             ->with(['subalternatif', 'subalternatif.kriteria', 'detail'])->first();
+        $alternatif->increment('jml_access', 1);
         // dd($alternatif);
         $hasil = HasilMatrix::with(['alternatif', 'alternatif.detail', 'alternatif.subalternatif'])
             ->when($alternatif->subalternatif->count() > 0, function ($query) use ($alternatif) {
@@ -98,6 +100,7 @@ class HomeController extends Controller
             })
             ->orderBy('ranking', 'desc')
             ->get();
+
         return Inertia::render('DetailAlternatif', [
             'alternatifId' => $alternatif,
             'alternatif' => $hasil,

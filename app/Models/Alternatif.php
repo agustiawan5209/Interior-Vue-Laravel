@@ -10,7 +10,7 @@ class Alternatif extends Model
     use HasFactory;
     use HasFactory;
     protected $table = "alternatifs";
-    protected $fillable =['kode', 'nama'];
+    protected $fillable =['kode', 'nama','jml_access'];
 
     // public function lokasi(){
     //     return $this->hasOne(Lokasi::class, 'alternatif_id','id');

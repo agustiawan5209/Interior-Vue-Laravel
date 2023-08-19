@@ -83,7 +83,7 @@ function submitUpdate(){
         <Head title="Kriteria" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight">Nilai Bobot</h2>
-
+            <p class="m-xl-5 mb-2 text-gray-100 text-base">Halaman ini berfungsi untuk membandingkan hasil dari setiap bobot Kriteria yang digunakan sebagai bobot yang akan digunakan untuk memilih alternatif/interior terbaik berdasarkan kriteria yang ada.</p>
         </template>
 
         <div class="content main">

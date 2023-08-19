@@ -110,7 +110,7 @@ function submitUpdate() {
         <Head title="Alternatif" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight">Nilai Bobot</h2>
-
+            <p class="m-xl-5 mb-2 text-gray-100 text-base">Halaman ini berfungsi untuk membandingkan hasil dari setiap bobot alternatif yang digunakan untuk menampilkan alternatif/interior terbaik.</p>
         </template>
 
         <div class="content main">

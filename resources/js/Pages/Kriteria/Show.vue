@@ -55,7 +55,8 @@ function back() {
         </template>
 
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border lg:px-10 lg:py-4">
-            <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+            <p class="m-xl-5">DIbawah ini merupakan detail kriteria dari interior {{ kriteria.name }}. </p>
+            <div class="relative p-4 bg-white rounded-lg shadow  sm:p-5">
                 <ul class="w-full divide-y divide-gray-100">
                     <li class="grid grid-cols-4 px-4 py-3">
                         <PrimaryButton type="button" @click="back">Kembali</PrimaryButton>
@@ -71,6 +72,7 @@ function back() {
                 </ul>
                 <hr class="divider"/>
                 <h6 class="px-6 py-2 font-light">Sub Kriteria</h6>
+                <p class="m-xl-5 mb-2 text-gray-400 text-sm">Sub Kriteria adalah pilihan dari aspek kriteria pada interior yang akan dipilih nanti pengguna untuk menentukan interiornya </p>
                 <hr class="divider"/>
                 <ul class="w-full list-item divide-y-2">
                     <li class="grid grid-cols-4 px-4 py-3" v-for="item in kriteria.sub_kriteria">

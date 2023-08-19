@@ -51,7 +51,7 @@ function back() {
         <Head title="Alternatif" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight"> Detail {{ alternatif.name }}</h2>
-
+            <p class="m-xl-5 mb-2 text-gray-100 text-base">Halaman ini menampilkan detail dari alternatif/interior yang telah dipilih</p>
         </template>
 
         <div class="content main">

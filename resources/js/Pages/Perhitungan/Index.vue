@@ -122,6 +122,8 @@ const IndexRatio = [0, 0, 0.58, 0.9, 1.12, 1.24, 1.32, 1.41, 1.46, 1.49, 1.51, 1
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight">Perhitungan Akhir AHP <i>(Analytical Hierarchy
                     Process)</i></h2>
+                    <p class="m-xl-5 mb-2 text-gray-100 text-base">Pada Halaman Ini Akan menampilkan hasil dari perhitungan AHP <i>(Analytical Hierarchy
+                        Process)</i> untuk kriteria dan alternatif sehingga dapat ditentukan bahwa bobot alternatif/interior mana yang terbaik.</p>
         </template>
 
         <div class="loading-page top-0 fixed w-full h-full z-100 bg-gray-500 opacity-60 flex items-center justify-center"

@@ -32,14 +32,14 @@ function submit() {
 
         <Head title="Kriteria" />
 
-        <div class="container border rounded pb-2 border-primary">
+        <div class="container border rounded pb-2 border-primary mt-xl-5">
 
-            <div class="w-full px-4 flex justify-between py-2 items-center">
+            <div class="w-full px-4 flex justify-between py-2 items-center mt-xl-5">
                 <!-- Text -->
                 <div class="block" data-aos="flip-up">
                     <h3
                         class="text-2xl md:text-3xl font-semibold leading-10 sm:leading-none tracking-wide text-base-100 border-b-2 capitalize ">
-                        Alternatif Lokasi
+                      Pencarian Interior
                     </h3>
                 </div>
                 <div>
@@ -84,11 +84,12 @@ function submit() {
                         <h5>{{ item.nama }}</h5>
                         </Link>
                         <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
+
                     </div>
                 </div>
             </div>
             <div class="container" v-else>
-                <h4 class="text-sm-center mb-lg-5">Alternatif Lain</h4>
+                <h4 class="text-sm-center mb-lg-5">Hasil Interior</h4>
                 <div class="row">
                     <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif_lain">
                         <div class="testmonial-wrapper">
@@ -97,14 +98,7 @@ function submit() {
                             <h5>{{ item.nama }}</h5>
                             </Link>
                             <p v-if="item.detail !== null" class="text-black">{{ item.detail.deskripsi }}</p>
-                            <div class="block">
-                                <h4>Material</h4>
-                                <p v-if="item.detail !== null" class="text-black text-sm">{{ item.detail.material }}</p>
-                            </div>
-                            <div class="block">
-                                <h4>Furnitur</h4>
-                                <p v-if="item.detail !== null" class="text-black text-sm">{{ item.detail.furnitur }}</p>
-                            </div>
+
                         </div>
                     </div>
                 </div>

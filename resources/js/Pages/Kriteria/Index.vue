@@ -48,10 +48,11 @@ function plusSubKriteria() {
         <Head title="Kriteria" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight">Kriteria</h2>
-
+            <p class="m-xl-5">Kriteria ini merupakan aspek visual dan keindahan dari interior yang dipilih. Misalnya, desain, warna, gaya, dan tata letak yang menarik. </p>
         </template>
 
         <div class="content main">
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border">
                 <div class="border border-gray-300 rounded-lg ">
                     <div class="relative shadow-md">

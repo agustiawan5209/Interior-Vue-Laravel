@@ -55,9 +55,10 @@ function plusSubAlternatif() {
         <Head title="Alternatif" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight"> Form Alternatif</h2>
-
+            <p class="m-xl-5 mb-2 text-gray-100 text-base">Form alternatif digunakan untuk mengisi data interior yang ada pada perusahaan atau manufactur. pada form ini diharuskan untuk mengisi setiap inputan yang ada dan memilih subkriteria dari setiap kriteria interior seperti model,ruangan, dll.</p>
         </template>
         <div class="content main">
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border lg:px-10 lg:py-4">
                 <div class="relative p-4 bg-second-primary rounded-lg shadow sm:p-5">
 

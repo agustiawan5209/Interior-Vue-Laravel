@@ -48,9 +48,10 @@ function plusSubAlternatif() {
         <Head title="Alternatif" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight">Alternatif</h2>
-
+            <p class="m-xl-5 mb-2 text-gray-100 text-base">Alternatif/Interior adalah hasil pilihan yang akan tampil saat pengguna telah memilih kriteria dan subkriteria dari interior yang ada</p>
         </template>
         <div class="content main">
+
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border lg:px-10 lg:py-4">
                 <div class="border border-gray-300 rounded-lg ">
                     <div class="relative shadow-md">
@@ -74,6 +75,8 @@ function plusSubAlternatif() {
                                     <th scope="col" class="px-4 py-3">Kode</th>
                                     <th scope="col" class="px-4 py-3">Nama</th>
                                     <th scope="col" class="px-4 py-3">image</th>
+                                    <th scope="col" class="px-4 py-3 text-xs">Jumlah pengguna Yang Melihat</th>
+
                                 </tr>
                             </thead>
                             <tbody v-if="Alternatif.data.length > 0">
@@ -92,6 +95,11 @@ function plusSubAlternatif() {
                                     </td>
                                     <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-600">
                                         <img v-if="item.detail !== null" :src="item.detail.image_path" :alt="item.nama" class="w-32 rounded-xl object-cover" >
+                                    </td>
+                                    <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-600">
+                                        <div class="flex items-center">
+                                            {{ item.jml_access }}
+                                        </div>
                                     </td>
                                     <td class="px-4 py-2 font-medium whitespace-nowrap text-gray-600">
                                         <div class="flex items-center justify-center gap-4">
