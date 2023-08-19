@@ -48,7 +48,7 @@ function plusSubAlternatif() {
         <Head title="Alternatif" />
         <template #header>
             <h2 class="font-semibold text-sm md:text-xl leading-tight">Alternatif</h2>
-            <p class="m-xl-5 mb-2 text-gray-100 text-base">Alternatif/Interior adalah hasil pilihan yang akan tampil saat pengguna telah memilih kriteria dan subkriteria dari interior yang ada</p>
+            <p class="text-gray-100 text-sm">Alternatif/Interior adalah hasil pilihan yang akan tampil saat pengguna telah memilih kriteria dan subkriteria dari interior yang ada</p>
         </template>
         <div class="content main">
 
