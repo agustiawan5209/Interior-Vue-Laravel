@@ -23,11 +23,16 @@ class HomeController extends Controller
         $hasil =  Alternatif::with(['subalternatif', 'detail', 'nilaiMatrix'])
             ->whereHas('subalternatif', function ($query) use ($sub_kriteria) {
                 $query->when($sub_kriteria ?? null, function ($query, $fill) {
+                    // dd(is_array($fill));
                     foreach ($fill as $key => $value) {
-                        $im = explode(',', $value);
-                        // dd($im);
-                        $query->where('kriteria_kode', '=', $im[0])
-                            ->where('sub_kriteria', '=', $im[1]);
+                        if (is_array($value)) {
+                            $im = explode(',', $value);
+                            // dd($im);
+                            $query->where('kriteria_kode', '=', $im[0])
+                                ->where('sub_kriteria', '=', $im[1]);
+                        } else {
+                            $query->where('sub_kriteria', '=', $fill);
+                        }
                     }
                 });
             })
@@ -44,9 +49,14 @@ class HomeController extends Controller
         if ($hasil->count() < 1) {
             $subalternatif =  SubAlternatif::when($sub_kriteria ?? null, function ($query, $fill) {
                 foreach ($fill as $key => $value) {
-                    $im = explode(',', $value);
-                    $query->where('kriteria_kode', '=', $im[0])
-                        ->orWhere('sub_kriteria', '=', $im[1]);
+                    if (is_array($value)) {
+                        $im = explode(',', $value);
+                        // dd($im);
+                        $query->where('kriteria_kode', '=', $im[0])
+                            ->where('sub_kriteria', 'like', '%' . $im[1] . '%');
+                    } else {
+                        $query->where('sub_kriteria', 'like', '%' . $value . '%');
+                    }
                 }
             })->get();
             // dd($subalternatif);
@@ -54,11 +64,19 @@ class HomeController extends Controller
             $NotsameData = [];
             foreach ($subalternatif as $key => $value) {
                 foreach ($sub_kriteria as $fill) {
-                    $im = explode(',', $fill);
-                    if ($value->sub_kriteria == $im[1]) {
-                        $sameData[] = $value->alternatif_id;
+                    if (is_array($fill)) {
+                        $im = explode(',', $fill);
+                        if ($value->sub_kriteria == $im[1]) {
+                            $sameData[] = $value->alternatif_id;
+                        } else {
+                            $NotsameData[] = $value->alternatif_id;
+                        }
                     } else {
-                        $NotsameData[] = $value->alternatif_id;
+                        if ($value->sub_kriteria == $fill) {
+                            $sameData[] = $value->alternatif_id;
+                        } else {
+                            $NotsameData[] = $value->alternatif_id;
+                        }
                     }
                 }
             }

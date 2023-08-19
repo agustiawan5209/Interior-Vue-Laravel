@@ -59,13 +59,14 @@ function submit() {
                         <label :for="item.kode" class="input-group-text">{{
                             item.name
                         }}</label>
-                        <select v-model="FilterForm.subkriteria[index]" :name="item.kode" :id="item.kode"
+                        <select v-model="FilterForm.subkriteria[index]" :name="item.kode" :id="item.kode" v-if="item.name != 'ukuran' && item.name != 'Ukuran'"
                             class="form-control w-100">
                             <option v-for="(opt, idx) in item.sub_kriteria" :key="opt.id"
                                 :value="item.kode + ',' + opt.nama">
                                 {{ opt.nama }}
                             </option>
                         </select>
+                        <input type="text" v-model="FilterForm.subkriteria[index]" :name="item.kode" :id="item.kode" class="form-control" v-else>
                     </div>
                 </div>
                 <div class=" flex flex-row">
