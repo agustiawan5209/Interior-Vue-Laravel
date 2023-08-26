@@ -70,7 +70,7 @@ class AlternatifController extends Controller
            $image = $request->file('image');
            if($image !== null){
                 $name = md5($image->getClientOriginalName());
-                $image->store('public','details/'. $name);
+                $image->storeAs('public','details/'. $name);
 
                 AlternatifDetail::create([
                     'alternatif_id'=>$alternatif->id,
