@@ -19,6 +19,7 @@ class HomeController extends Controller
     public function kriteria()
     {
         $sub_kriteria = Request::input('subkriteria', []);
+        $sub_kriteria[2] = '3 x 2';
         // dd($sub_kriteria);
         $hasil =  Alternatif::with(['subalternatif', 'detail', 'nilaiMatrix'])
             ->whereHas('subalternatif', function ($query) use ($sub_kriteria) {
@@ -42,55 +43,22 @@ class HomeController extends Controller
             ->get();
 
         $hasil_alternatif_lain = [];
-        // $subalternatif  = SubAlternatif::all();
-        // foreach ($sub_kriteria as $key => $value) {
-        //     $hasil_alternatif_lain[$key] = $this->binarySearch($subalternatif, $value);
-        // }
         if ($hasil->count() < 1) {
-            $subalternatif =  SubAlternatif::when($sub_kriteria ?? null, function ($query, $fill) {
-                foreach ($fill as $key => $value) {
-                    if (is_array($value)) {
-                        $im = explode(',', $value);
-                        // dd($im);
-                        $query->where('kriteria_kode', '=', $im[0])
-                            ->where('sub_kriteria', 'like', '%' . $im[1] . '%');
-                    } else {
-                        $query->where('sub_kriteria', 'like', '%' . $value . '%');
-                    }
-                }
-            })->get();
-            // dd($subalternatif);
-            $sameData = [];
-            $NotsameData = [];
-            foreach ($subalternatif as $key => $value) {
-                foreach ($sub_kriteria as $fill) {
-                    if (is_array($fill)) {
-                        $im = explode(',', $fill);
-                        if ($value->sub_kriteria == $im[1]) {
-                            $sameData[] = $value->alternatif_id;
-                        } else {
-                            $NotsameData[] = $value->alternatif_id;
-                        }
-                    } else {
-                        if ($value->sub_kriteria == $fill) {
-                            $sameData[] = $value->alternatif_id;
-                        } else {
-                            $NotsameData[] = $value->alternatif_id;
-                        }
-                    }
-                }
-            }
-            foreach ($NotsameData as $key => $value) {
-
-                $subalternatif =  SubAlternatif::where('kriteria_kode', '=', $value)->get();
-                if ($subalternatif->count() > 0) {
-                    $hasil_alternatif_lain[] = Alternatif::with(['subalternatif', 'detail', 'nilaiMatrix'])
-                        ->where('id', $value)
-                        ->first();
-                }
-            }
             $hasil_alternatif_lain = Alternatif::with(['subalternatif', 'detail', 'nilaiMatrix'])
-                ->whereIn('id', $sameData)->get();
+                ->wherehas('subalternatif', function ($query)use($sub_kriteria) {
+                    foreach ($sub_kriteria as $key => $value) {
+                        if (strpos($value, ',') !== false) {
+                            $im = explode(',', $value);
+                            $query->where('sub_kriteria', 'like', '%' . $im[1] . '%')
+                            ->orWhere('kriteria_kode', '=', '%' . $im[0] . '%');
+
+                        } else {
+                            $query->where('sub_kriteria', 'like', '%' . $value . '%');
+                            // dd(SubAlternatif::where('sub_kriteria', 'like', '%' . $value . '%')->get());
+                        }
+                    }
+                })->get();
+
         }
         return Inertia::render('Kriteria', [
             'subkriteria' => $sub_kriteria,

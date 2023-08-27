@@ -90,7 +90,7 @@ function submit() {
                 </div>
             </div>
             <div class="container" v-else>
-                <h4 class="text-sm-center mb-lg-5">Hasil Interior</h4>
+                <h4 class="text-sm-center mb-lg-5">Rekomendasi Interior</h4>
                 <div class="row">
                     <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif_lain">
                         <div class="testmonial-wrapper">
