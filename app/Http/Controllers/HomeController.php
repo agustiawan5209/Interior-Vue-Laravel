@@ -33,6 +33,9 @@ class HomeController extends Controller
                     }
                 });
             })
+            ->whereHas('nilaiMatrix', function($query){
+                $query->orderBy('ranking','asc');
+            })
             ->get();
         $hasil_alternatif_lain = [];
         if ($hasil->count() < 1) {
@@ -48,7 +51,10 @@ class HomeController extends Controller
                         $query->where('kriteria_kode', 'like', '%' . $data[$i] . '%')
                             ->orWhere('sub_kriteria', 'like', '%' . $data[$i] . '%');
                     }
-                })->get();
+                })->whereHas('nilaiMatrix', function($query){
+                    $query->orderBy('ranking','asc');
+                })
+                ->get();
         }
         return Inertia::render('Kriteria', [
             'subkriteria' => $sub_kriteria,
