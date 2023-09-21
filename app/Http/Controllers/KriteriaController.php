@@ -6,6 +6,7 @@ use App\Models\Kriteria;
 use App\Models\NilaiBobotKriteria;
 use App\Models\NilaiBobotAlternatif;
 use App\Http\Controllers\SubKriteriaController;
+use App\Models\Alternatif;
 use App\Models\MatrixAlternatifJson;
 use App\Models\MatrixJson;
 use App\Models\SubAlternatif;
@@ -66,6 +67,15 @@ class KriteriaController extends Controller
         // Tambah NilaiBobotAlternatifController
         $tbKriteria = new NilaiBobotAlternatifController();
         $tbKriteria->store();
+
+        $alternatif = Alternatif::all();
+        foreach($alternatif as $key=>$value){
+            SubAlternatif::create([
+                'alternatif_id'=> $value->id,
+                'sub_kriteria' => Request::input('subkriteria')[0],
+                'kriteria_kode'=> Request::input('kode'),
+            ]);
+        }
         return redirect()->route('Kriteria.index');
     }
 

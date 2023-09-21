@@ -62,7 +62,7 @@ function submit() {
                         <select v-model="FilterForm.subkriteria[index]" :name="item.kode" :id="item.kode" v-if="item.name != 'ukuran' && item.name != 'Ukuran'"
                             class="form-control w-100">
                             <option v-for="(opt, idx) in item.sub_kriteria" :key="opt.id"
-                                :value="item.kode + ',' + opt.nama">
+                                :value="opt.nama">
                                 {{ opt.nama }}
                             </option>
                         </select>
@@ -77,7 +77,9 @@ function submit() {
         </div>
         <br><br><br>
         <div class="container mx-auto mt-10">
+
             <div class="row " v-if="alternatif.length > 0">
+                <h4 class="text-sm-center mb-lg-5">Rekomendasi Interior</h4>
                 <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif">
                     <div class="testmonial-wrapper">
                         <img v-if="item.detail !== null" :src="item.detail.image_path" :alt="item.nama">
@@ -90,7 +92,16 @@ function submit() {
                 </div>
             </div>
             <div class="container" v-else>
-                <h4 class="text-sm-center mb-lg-5">Rekomendasi Interior</h4>
+                <div class="p-6 py-12 dark:bg-violet-400 border mb-lg-5">
+                    <div class="container mx-auto">
+                        <div class="flex flex-col lg:flex-row items-center justify-between">
+                            <h2 class="text-center text-6xl tracki font-bold">Pencarian Kosong
+
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="text-sm-center mb-lg-5">Rekomendasi Interior lain</h4>
                 <div class="row">
                     <div class="col-sm-10 col-md-4 m-auto" v-for="item in alternatif_lain">
                         <div class="testmonial-wrapper">
