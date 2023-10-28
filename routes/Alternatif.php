@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\NilaiBobotAlternatifController;
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'role:admin'])->group(function(){
 
 Route::group(['prefix'=> 'Alternatif', 'as'=> 'Alternatif.'],function(){
     Route::controller(AlternatifController::class)->group(function(){

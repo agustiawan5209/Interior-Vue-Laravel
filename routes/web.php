@@ -22,9 +22,7 @@ Route::get('/', [HomeController::class,'home'])->name('home');
 Route::get('/kriteria', [HomeController::class,'kriteria'])->name('Home.kriteria');
 Route::get('/detail', [HomeController::class,'detail'])->name('Home.detail');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,7 +34,7 @@ require __DIR__.'/auth.php';
 require __DIR__.'/Kriteria.php';
 require __DIR__.'/Alternatif.php';
 
-Route::group(['prefix'=> 'Perhitungan', 'as'=> 'Perhitungan.', 'middleware'=> ['auth']],function(){
+Route::group(['prefix'=> 'Perhitungan', 'as'=> 'Perhitungan.', 'middleware'=> ['auth', 'role:admin']],function(){
     Route::controller(HasilMatrixController::class)->group(function(){
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');

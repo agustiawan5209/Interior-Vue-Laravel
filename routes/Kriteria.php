@@ -4,7 +4,7 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\NilaiBobotKriteriaController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::group(['prefix' => 'Kriteria', 'as' => 'Kriteria.'], function () {
         Route::controller(KriteriaController::class)->group(function () {

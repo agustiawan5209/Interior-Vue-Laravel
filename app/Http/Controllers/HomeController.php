@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Request;
 
 class HomeController extends Controller
 {
+    public function dashboard()
+    {
+        if (Auth::user()->role == 'admin') {
+            return Inertia::render('Dashboard');
+        } else {
+            return redirect()->route('home');
+        }
+    }
     public function home()
     {
         return Inertia::render('Welcome');
@@ -33,8 +41,8 @@ class HomeController extends Controller
                     }
                 });
             })
-            ->whereHas('nilaiMatrix', function($query){
-                $query->orderBy('ranking','asc');
+            ->whereHas('nilaiMatrix', function ($query) {
+                $query->orderBy('ranking', 'asc');
             })
             ->get();
         $hasil_alternatif_lain = [];
@@ -51,8 +59,8 @@ class HomeController extends Controller
                         $query->where('kriteria_kode', 'like', '%' . $data[$i] . '%')
                             ->orWhere('sub_kriteria', 'like', '%' . $data[$i] . '%');
                     }
-                })->whereHas('nilaiMatrix', function($query){
-                    $query->orderBy('ranking','asc');
+                })->whereHas('nilaiMatrix', function ($query) {
+                    $query->orderBy('ranking', 'asc');
                 })
                 ->get();
         }

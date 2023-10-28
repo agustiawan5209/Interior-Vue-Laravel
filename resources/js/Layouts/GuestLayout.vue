@@ -2,7 +2,9 @@
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import '../../asset/css/creative-design.css';
 
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
+
+const user = usePage().props.auth.user;
 </script>
 
 <template>
@@ -30,9 +32,17 @@ import { Link } from '@inertiajs/vue3';
                             <Link class="nav-link" :href="route('Home.kriteria')">Input Kriteria</Link>
                         </li>
 
-                        <li class="nav-item ml-md-4">
+                        <li class="nav-item ml-md-4" v-if="user.name == null">
                             <Link class="nav-link btn btn-primary" href="login">Login</Link>
                         </li>
+                        <li class="nav-item ml-md-4" v-if="user.name == null">
+                            <Link class="nav-link btn btn-primary" href="register">Register</Link>
+                        </li>
+
+                        <li class="nav-item ml-md-4" v-else>
+                            <Link class="nav-link btn btn-primary" :href="route('logout')" method="post" as="button">Logout</Link>
+                        </li>
+
                     </ul>
                 </div>
             </div>
