@@ -32,10 +32,10 @@ const user = usePage().props.auth.user;
                             <Link class="nav-link" :href="route('Home.kriteria')">Input Kriteria</Link>
                         </li>
 
-                        <li class="nav-item ml-md-4" v-if="user.name == null">
+                        <li class="nav-item ml-md-4" v-if="user == null">
                             <Link class="nav-link btn btn-primary" href="login">Login</Link>
                         </li>
-                        <li class="nav-item ml-md-4" v-if="user.name == null">
+                        <li class="nav-item ml-md-4" v-if="user == null">
                             <Link class="nav-link btn btn-primary" href="register">Register</Link>
                         </li>
 
